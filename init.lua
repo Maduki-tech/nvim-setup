@@ -22,7 +22,7 @@ require("packer").startup(
         }
         use "nvim-telescope/telescope-fzy-native.nvim"
 
-				-- Treesitter
+        -- Treesitter
         use "nvim-treesitter/nvim-treesitter"
         use "nvim-treesitter/nvim-treesitter-textobjects"
         use "nvim-treesitter/playground"
@@ -61,6 +61,7 @@ vim.api.nvim_set_keymap("", "<Space>", "<Nop>", {noremap = true, silent = true})
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Basic window Movement
 vim.api.nvim_set_keymap("n", "<leader>d", "<cmd>:vsplit <CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<leader>h", "<cmd>:wincmd h <CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<leader>j", "<cmd>:wincmd j <CR>", {noremap = true, silent = true})
@@ -68,19 +69,13 @@ vim.api.nvim_set_keymap("n", "<leader>k", "<cmd>:wincmd k <CR>", {noremap = true
 vim.api.nvim_set_keymap("n", "<leader>l", "<cmd>:wincmd l <CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "Q", "<cmd>:x <CR>", {noremap = true, silent = true})
 
--- vim.api.nvim_set_keymap('n', '<C-b>', ':NERDTreeToggle <CR>', {})
--- vim.api.nvim_set_keymap('n', '<C-f>', ':NERDTreeFind <CR>', {})
-vim.api.nvim_set_keymap("n", "<leader>bh", '<cmd>lua require"dev.bfullcomment".HeaderComment()<CR>', {})
-vim.api.nvim_set_keymap("n", "<leader>bs", '<cmd>lua require"dev.bfullcomment".LineSeperator()<CR>', {})
-vim.api.nvim_set_keymap("n", "<leader>bc", '<cmd>lua require"dev.bfullcomment".simpleOne()<CR>', {})
+-- Window resizing
 vim.api.nvim_set_keymap("n", "<leader>+", "<cmd>:wincmd + <CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>-", "<cmd>:wincmd - <CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>.", "<cmd>:vertical resize +5<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>,", "<cmd>:vertical resize -5<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>=", "<cmd>:wincmd = <CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>tf", "<cmd>Neoformat <CR>", {})
-
-vim.api.nvim_set_keymap("n", "<C-b>", "<cmd>:NvimTreeToggle <CR>", {})
 
 -- Highlight on yank
 vim.api.nvim_exec(
@@ -99,14 +94,47 @@ vim.g.indent_blankline_char = ""
 vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", {noremap = true, silent = true})
 ------------------ GENERAL CONFIG ------------------
 
--- Gitsigns
 require("gitsigns").setup {
     signs = {
-        add = {hl = "GitGutterAdd", text = "+"},
-        change = {hl = "GitGutterChange", text = "~"},
-        delete = {hl = "GitGutterDelete", text = "_"},
-        topdelete = {hl = "GitGutterDelete", text = "‾"},
-        changedelete = {hl = "GitGutterChange", text = "~"}
+        add = {hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn"},
+        change = {hl = "GitSignsChange", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn"},
+        delete = {hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn"},
+        topdelete = {hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn"},
+        changedelete = {hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn"}
+    },
+    signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+    numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
+    linehl = true, -- Toggle with `:Gitsigns toggle_linehl`
+    word_diff = true, -- Toggle with `:Gitsigns toggle_word_diff`
+    watch_gitdir = {
+        interval = 1000,
+        follow_files = true
+    },
+    attach_to_untracked = true,
+    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+    current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+        delay = 1000,
+        ignore_whitespace = false
+    },
+    current_line_blame_formatter_opts = {
+        relative_time = false
+    },
+    sign_priority = 6,
+    update_debounce = 100,
+    status_formatter = nil, -- Use default
+    max_file_length = 40000,
+    preview_config = {
+        -- Options passed to nvim_open_win
+        border = "single",
+        style = "minimal",
+        relative = "cursor",
+        row = 0,
+        col = 1
+    },
+    yadm = {
+        enable = false
     }
 }
 
