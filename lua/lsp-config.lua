@@ -116,3 +116,5 @@ require'lspconfig'.emmet_ls.setup{
 require'lspconfig'.gopls.setup{}
 
 require'lspconfig'.jdtls.setup{ cmd = { 'jdtls' } }
+
+require'lspconfig'.bashls.setup{}
