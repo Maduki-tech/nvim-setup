@@ -7,6 +7,8 @@ end
 require("user.setfile")
 require("user.lsp-config")
 require("user.keymap")
+require("user.gitsigns")
+require("user.telescope")
 
 local use = require("packer").use
 require("packer").startup(
@@ -18,7 +20,9 @@ require("packer").startup(
         -- Telescope Requirements
         use {
             "nvim-telescope/telescope.nvim",
-            requires = {"nvim-lua/plenary.nvim"}
+            requires = {
+                "nvim-lua/plenary.nvim"
+            }
         }
         use "nvim-telescope/telescope-fzy-native.nvim"
 
@@ -69,6 +73,8 @@ vim.api.nvim_set_keymap("n", "<leader>k", "<cmd>:wincmd k <CR>", {noremap = true
 vim.api.nvim_set_keymap("n", "<leader>l", "<cmd>:wincmd l <CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "Q", "<cmd>:x <CR>", {noremap = true, silent = true})
 
+vim.api.nvim_set_keymap("n", "<C-b>", "<cmd>:NvimTreeToggle <CR>", {})
+
 -- Window resizing
 vim.api.nvim_set_keymap("n", "<leader>+", "<cmd>:wincmd + <CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>-", "<cmd>:wincmd - <CR>", {})
@@ -94,131 +100,7 @@ vim.g.indent_blankline_char = ""
 vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", {noremap = true, silent = true})
 ------------------ GENERAL CONFIG ------------------
 
-require("gitsigns").setup {
-    signs = {
-        add = {hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn"},
-        change = {hl = "GitSignsChange", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn"},
-        delete = {hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn"},
-        topdelete = {hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn"},
-        changedelete = {hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn"}
-    },
-    signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-    numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
-    linehl = true, -- Toggle with `:Gitsigns toggle_linehl`
-    word_diff = true, -- Toggle with `:Gitsigns toggle_word_diff`
-    watch_gitdir = {
-        interval = 1000,
-        follow_files = true
-    },
-    attach_to_untracked = true,
-    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
-    current_line_blame_opts = {
-        virt_text = true,
-        virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-        delay = 1000,
-        ignore_whitespace = false
-    },
-    current_line_blame_formatter_opts = {
-        relative_time = false
-    },
-    sign_priority = 6,
-    update_debounce = 100,
-    status_formatter = nil, -- Use default
-    max_file_length = 40000,
-    preview_config = {
-        -- Options passed to nvim_open_win
-        border = "single",
-        style = "minimal",
-        relative = "cursor",
-        row = 0,
-        col = 1
-    },
-    yadm = {
-        enable = false
-    }
-}
-
 -- Telescope
-require("telescope").setup {
-    defaults = {
-        file_ignore_patterns = {
-            "node_modules"
-        },
-        mappings = {
-            i = {
-                ["<C-u>"] = false,
-                ["<C-d>"] = false
-            }
-        },
-        extensions = {
-            fzy_native = {
-                override_generic_sorter = false,
-                override_file_sorter = true
-            }
-        }
-    }
-}
-
--- ADD Telescope shortcuts
--- IMPORTANT SHORTCUTS
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader><space>",
-    [[<cmd>lua require('telescope.builtin').buffers()<CR>]],
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>sf",
-    [[<cmd>lua require('telescope.builtin').find_files()<CR>]],
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fa",
-    [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]],
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap("n", "<leader>ff", [[<Plug>(prettier-format)]], {noremap = true, silent = true})
-
--- TESTING SHORTCUTS
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>sb",
-    [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]],
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>sh",
-    [[<cmd>lua require('telescope.builtin').help_tags()<CR>]],
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>st",
-    [[<cmd>lua require('telescope.builtin').tags()<CR>]],
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>sd",
-    [[<cmd>lua require('telescope.builtin').grep_string()<CR>]],
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>sp",
-    [[<cmd>lua require('telescope.builtin').live_grep()<CR>]],
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>so",
-    [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]],
-    {noremap = true, silent = true}
-)
-
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
 require("nvim-treesitter.configs").setup {
