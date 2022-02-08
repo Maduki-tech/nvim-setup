@@ -8,6 +8,7 @@ require("user.setfile")
 require("user.lsp-config")
 require("user.keymap")
 require("user.gitsigns")
+require("user.treesitter")
 require("user.telescope")
 
 local use = require("packer").use
@@ -83,6 +84,66 @@ vim.api.nvim_set_keymap("n", "<leader>,", "<cmd>:vertical resize -5<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>=", "<cmd>:wincmd = <CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>tf", "<cmd>Neoformat <CR>", {})
 
+-- ADD Telescope shortcuts
+-- IMPORTANT SHORTCUTS
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader><space>",
+    [[<cmd>lua require('telescope.builtin').buffers()<CR>]],
+    {noremap = true, silent = true}
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>sf",
+    [[<cmd>lua require('telescope.builtin').find_files()<CR>]],
+    {noremap = true, silent = true}
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>fa",
+    [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]],
+    {noremap = true, silent = true}
+)
+
+-- TESTING SHORTCUTS
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>sb",
+    [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]],
+    {noremap = true, silent = true}
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>sh",
+    [[<cmd>lua require('telescope.builtin').help_tags()<CR>]],
+    {noremap = true, silent = true}
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>st",
+    [[<cmd>lua require('telescope.builtin').tags()<CR>]],
+    {noremap = true, silent = true}
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>sd",
+    [[<cmd>lua require('telescope.builtin').grep_string()<CR>]],
+    {noremap = true, silent = true}
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>sp",
+    [[<cmd>lua require('telescope.builtin').live_grep()<CR>]],
+    {noremap = true, silent = true}
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>so",
+    [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]],
+    {noremap = true, silent = true}
+)
+
+
 -- Highlight on yank
 vim.api.nvim_exec(
     [[
@@ -100,59 +161,6 @@ vim.g.indent_blankline_char = ""
 vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", {noremap = true, silent = true})
 ------------------ GENERAL CONFIG ------------------
 
--- Telescope
--- Treesitter configuration
--- Parsers must be installed manually via :TSInstall
-require("nvim-treesitter.configs").setup {
-    highlight = {
-        enable = true -- false will disable the whole extension
-    },
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm"
-        }
-    },
-    indent = {
-        enable = true
-    },
-    textobjects = {
-        select = {
-            enable = true,
-            lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-            keymaps = {
-                -- You can use the capture groups defined in textobjects.scm
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner"
-            }
-        },
-        move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-                ["]m"] = "@function.outer",
-                ["]]"] = "@class.outer"
-            },
-            goto_next_end = {
-                ["]M"] = "@function.outer",
-                ["]["] = "@class.outer"
-            },
-            goto_previous_start = {
-                ["[m"] = "@function.outer",
-                ["[["] = "@class.outer"
-            },
-            goto_previous_end = {
-                ["[M"] = "@function.outer",
-                ["[]"] = "@class.outer"
-            }
-        }
-    }
-}
 vim.cmd [[
 augroup trimWhiteSpace
 autocmd!
