@@ -22,4 +22,3 @@ vim.api.nvim_set_keymap("n", "-D", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>"
 vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>so", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
 vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
-vim.api.nvim_set_keymap("n", "<leader>z", [[<cmd> Format execute 'lua vim.lsp.buf.formatting()'<CR>]], opts)
