@@ -118,3 +118,5 @@ require'lspconfig'.gopls.setup{}
 require'lspconfig'.jdtls.setup{ cmd = { 'jdtls' } }
 
 require'lspconfig'.bashls.setup{}
+
+require'lspconfig'.dockerls.setup{}

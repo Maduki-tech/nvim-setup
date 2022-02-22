@@ -81,6 +81,7 @@ vim.api.nvim_set_keymap("n", "<leader>gp", "<cmd>:Git push<CR>", {noremap = true
 vim.api.nvim_set_keymap("n", "<leader>gh", "<cmd>:diffget //3<CR>", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>gf", "<cmd>:diffget //2<CR>", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-b>", "<cmd>:NvimTreeToggle <CR>", {})
+vim.api.nvim_set_keymap("v", "<leader>y", [["*y]], {})
 
 -- Window resizing
 vim.api.nvim_set_keymap("n", "<leader>+", "<cmd>:wincmd + <CR>", {})
@@ -90,6 +91,8 @@ vim.api.nvim_set_keymap("n", "<leader>,", "<cmd>:vertical resize -5<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>=", "<cmd>:wincmd = <CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>tf", "<cmd>Neoformat <CR>", {})
 
+-- LSP Snippet
+vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", {noremap = true, silent = true})
 -- ADD Telescope shortcuts
 -- IMPORTANT SHORTCUTS
 vim.api.nvim_set_keymap(
@@ -104,14 +107,8 @@ vim.api.nvim_set_keymap(
     [[<cmd>lua require('telescope.builtin').find_files()<CR>]],
     {noremap = true, silent = true}
 )
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fa",
-    [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]],
-    {noremap = true, silent = true}
-)
 
--- TESTING SHORTCUTS
+
 vim.api.nvim_set_keymap(
     "n",
     "<leader>sb",
@@ -124,32 +121,24 @@ vim.api.nvim_set_keymap(
     [[<cmd>lua require('telescope.builtin').help_tags()<CR>]],
     {noremap = true, silent = true}
 )
+
 vim.api.nvim_set_keymap(
     "n",
-    "<leader>st",
-    [[<cmd>lua require('telescope.builtin').tags()<CR>]],
+    "<leader>sg",
+    [[<cmd>lua require('telescope.builtin').git_branches()<CR>]],
     {noremap = true, silent = true}
 )
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>sd",
-    [[<cmd>lua require('telescope.builtin').grep_string()<CR>]],
-    {noremap = true, silent = true}
-)
+
 vim.api.nvim_set_keymap(
     "n",
     "<leader>sp",
-    [[<cmd>lua require('telescope.builtin').live_grep()<CR>]],
-    {noremap = true, silent = true}
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>so",
-    [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]],
+    [[<cmd>lua require('telescope.builtin').builtin()<CR>]],
     {noremap = true, silent = true}
 )
 
 
+
+------------------ GENERAL CONFIG ------------------
 -- Highlight on yank
 vim.api.nvim_exec(
     [[
@@ -164,8 +153,6 @@ vim.api.nvim_exec(
 vim.g.indent_blankline_char = ""
 
 -- Dont know why this only works here
-vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", {noremap = true, silent = true})
------------------- GENERAL CONFIG ------------------
 
 vim.cmd [[
 augroup trimWhiteSpace
