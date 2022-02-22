@@ -160,6 +160,10 @@ augroup END
 ]]
 
 -- CPP AUTO RUN
+--vim.cmd [[
+--autocmd vimEnter *.cpp nnoremap <C-r> :w <CR> :!clear ; g++ --std=c++17 %; if [ -f a.out ]; then time ./a.out; rm a.out; fi<CR>
+--]]
+
 vim.cmd [[
-autocmd vimEnter *.cpp nnoremap <C-r> :w <CR> :!clear ; g++ --std=c++17 %; if [ -f a.out ]; then time ./a.out; rm a.out; fi<CR>
+autocmd vimEnter *.go nnoremap <C-r> :w <CR> :!go run . <CR>
 ]]
