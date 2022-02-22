@@ -24,3 +24,5 @@ vim.api.nvim_set_keymap("n", "<leader>so", [[<cmd>lua require('telescope.builtin
 vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
 vim.api.nvim_set_keymap("n", "<leader>y", '"*y', opts)
+
+vim.api.nvim_set_keymap("n", "<F4>", "<cmd>:source ~/.config/nvim/init.lua <CR>", opts)

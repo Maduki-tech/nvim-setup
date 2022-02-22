@@ -10,6 +10,7 @@ require("user.keymap")
 require("user.gitsigns")
 require("user.treesitter")
 require("user.telescope")
+-- require("keymap")
 
 local use = require("packer").use
 require("packer").startup(
@@ -76,7 +77,7 @@ vim.api.nvim_set_keymap("n", "Q", "<cmd>:x <CR>", {noremap = true, silent = true
 
 
 -- GIT KEYMAPS
-vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>:G<CR>", {noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>:G<CR>", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>gp", "<cmd>:Git push<CR>", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>gh", "<cmd>:diffget //3<CR>", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>gf", "<cmd>:diffget //2<CR>", {noremap = true, silent = true })
@@ -91,8 +92,6 @@ vim.api.nvim_set_keymap("n", "<leader>,", "<cmd>:vertical resize -5<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>=", "<cmd>:wincmd = <CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>tf", "<cmd>Neoformat <CR>", {})
 
--- LSP Snippet
-vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", {noremap = true, silent = true})
 -- ADD Telescope shortcuts
 -- IMPORTANT SHORTCUTS
 vim.api.nvim_set_keymap(
@@ -151,8 +150,6 @@ vim.api.nvim_exec(
 )
 
 vim.g.indent_blankline_char = ""
-
--- Dont know why this only works here
 
 vim.cmd [[
 augroup trimWhiteSpace
