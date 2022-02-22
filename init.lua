@@ -102,7 +102,7 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
     "n",
-    "<leader>sf",
+    "<leader>fs",
     [[<cmd>lua require('telescope.builtin').find_files()<CR>]],
     {noremap = true, silent = true}
 )
@@ -110,27 +110,27 @@ vim.api.nvim_set_keymap(
 
 vim.api.nvim_set_keymap(
     "n",
-    "<leader>sb",
+    "<leader>fb",
     [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]],
     {noremap = true, silent = true}
 )
 vim.api.nvim_set_keymap(
     "n",
-    "<leader>sh",
+    "<leader>fh",
     [[<cmd>lua require('telescope.builtin').help_tags()<CR>]],
     {noremap = true, silent = true}
 )
 
 vim.api.nvim_set_keymap(
     "n",
-    "<leader>sg",
+    "<leader>fg",
     [[<cmd>lua require('telescope.builtin').git_branches()<CR>]],
     {noremap = true, silent = true}
 )
 
 vim.api.nvim_set_keymap(
     "n",
-    "<leader>sp",
+    "<leader>fp",
     [[<cmd>lua require('telescope.builtin').builtin()<CR>]],
     {noremap = true, silent = true}
 )
