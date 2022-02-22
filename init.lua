@@ -57,6 +57,7 @@ require("packer").startup(
         use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
         use "tpope/vim-fugitive" -- Git commands in nvi
         use "sbdchd/neoformat" -- formatting the text
+
     end
 )
 
@@ -75,12 +76,11 @@ vim.api.nvim_set_keymap("n", "<leader>k", "<cmd>:wincmd k <CR>", {noremap = true
 vim.api.nvim_set_keymap("n", "<leader>l", "<cmd>:wincmd l <CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "Q", "<cmd>:x <CR>", {noremap = true, silent = true})
 
-
 -- GIT KEYMAPS
-vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>:G<CR>", {noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>gp", "<cmd>:Git push<CR>", {noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>gh", "<cmd>:diffget //3<CR>", {noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>gf", "<cmd>:diffget //2<CR>", {noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>:G<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>gp", "<cmd>:Git push<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>gh", "<cmd>:diffget //3<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>gf", "<cmd>:diffget //2<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<C-b>", "<cmd>:NvimTreeToggle <CR>", {})
 vim.api.nvim_set_keymap("v", "<leader>y", [["*y]], {})
 vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", {noremap = true, silent = true})
@@ -107,7 +107,6 @@ vim.api.nvim_set_keymap(
     [[<cmd>lua require('telescope.builtin').find_files()<CR>]],
     {noremap = true, silent = true}
 )
-
 
 vim.api.nvim_set_keymap(
     "n",
