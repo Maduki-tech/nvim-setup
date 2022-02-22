@@ -83,6 +83,7 @@ vim.api.nvim_set_keymap("n", "<leader>gh", "<cmd>:diffget //3<CR>", {noremap = t
 vim.api.nvim_set_keymap("n", "<leader>gf", "<cmd>:diffget //2<CR>", {noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-b>", "<cmd>:NvimTreeToggle <CR>", {})
 vim.api.nvim_set_keymap("v", "<leader>y", [["*y]], {})
+vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", {noremap = true, silent = true})
 
 -- Window resizing
 vim.api.nvim_set_keymap("n", "<leader>+", "<cmd>:wincmd + <CR>", {})
