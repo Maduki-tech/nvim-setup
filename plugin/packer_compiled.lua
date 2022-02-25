@@ -170,6 +170,11 @@ _G.packer_plugins = {
     path = "/Users/davidschluter/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vim-commentary.git"] = {
+    loaded = true,
+    path = "/Users/davidschluter/.local/share/nvim/site/pack/packer/start/vim-commentary.git",
+    url = "https://github.com/tpope/vim-commentary"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/davidschluter/.local/share/nvim/site/pack/packer/start/vim-fugitive",
