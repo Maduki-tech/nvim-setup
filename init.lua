@@ -10,7 +10,7 @@ require("user.keymap")
 require("user.gitsigns")
 require("user.treesitter")
 require("user.telescope")
--- require("keymap")
+--require("user.nvim-tree")
 
 local use = require("packer").use
 require("packer").startup(
@@ -49,7 +49,15 @@ require("packer").startup(
                 "kyazdani42/nvim-web-devicons"
             },
             config = function()
-                require "nvim-tree".setup {}
+                require "nvim-tree".setup {
+                    auto_close = true,
+                    actions = {
+                        open_file = {
+                            quit_on_open = true,
+                            resize_window = true
+                        }
+                    }
+                }
             end
         }
 
@@ -77,6 +85,7 @@ vim.api.nvim_set_keymap("n", "<leader>j", "<cmd>:wincmd j <CR>", {noremap = true
 vim.api.nvim_set_keymap("n", "<leader>k", "<cmd>:wincmd k <CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<leader>l", "<cmd>:wincmd l <CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "Q", "<cmd>:x <CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("v", "<leader>p", '"_dP', {noremap = true, silent = true})
 
 -- GIT KEYMAPS
 vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>:G<CR>", {noremap = true, silent = true})
@@ -127,6 +136,13 @@ vim.api.nvim_set_keymap(
     "n",
     "<leader>fg",
     [[<cmd>lua require('telescope.builtin').git_branches()<CR>]],
+    {noremap = true, silent = true}
+)
+
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>fn",
+    [[<cmd>lua require('user.telescope').search_dotfiles()<CR>]],
     {noremap = true, silent = true}
 )
 
