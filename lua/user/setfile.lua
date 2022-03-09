@@ -51,7 +51,6 @@ vim.cmd [[colorscheme gruvbox]]
 vim.g.user_emmet_leader_key = '<C-e>'
 vim.g.user_emmet_mode = 'inv'    --enable all function in all mode.
 
-
 --Set statusbar
 vim.g.lightline = {
 	colorscheme = 'gruvbox',
