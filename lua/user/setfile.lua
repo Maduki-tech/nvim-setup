@@ -50,7 +50,6 @@ vim.cmd [[colorscheme gruvbox]]
 
 vim.g.user_emmet_leader_key = '<C-e>'
 vim.g.user_emmet_mode = 'inv'    --enable all function in all mode.
-vim.g.nvim_tree_quit_on_open = 1 -- NVIM-TREE WILL CLOSE WHEN OPEN FILE
 
 
 

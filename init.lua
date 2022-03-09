@@ -10,7 +10,7 @@ require("user.keymap")
 require("user.gitsigns")
 require("user.treesitter")
 require("user.telescope")
--- require("keymap")
+--require("user.nvim-tree")
 
 local use = require("packer").use
 require("packer").startup(
@@ -49,7 +49,16 @@ require("packer").startup(
                 "kyazdani42/nvim-web-devicons"
             },
             config = function()
-                require "nvim-tree".setup {}
+                require "nvim-tree".setup {
+                    open_on_setup = true,
+                    auto_close = true,
+                    actions = {
+                        open_file = {
+                            quit_on_open = true,
+                            resize_window = true
+                        }
+                    }
+                }
             end
         }
 
