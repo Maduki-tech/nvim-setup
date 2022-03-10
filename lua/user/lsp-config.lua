@@ -1,8 +1,8 @@
--- LSP settings
 local nvim_lsp = require "lspconfig"
 
-local opts = {noremap = true, silent = true}
-local on_attach = function(_, bufnr)
+-- TODO: MAYBE CHECK FOR SOME BETTER CONFIGS
+local on_attach = function()
+    local opts = {noremap = true, silent = true}
     vim.api.nvim_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     vim.api.nvim_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
     vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -23,6 +23,7 @@ local on_attach = function(_, bufnr)
     vim.api.nvim_set_keymap("n", "-d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
     vim.api.nvim_set_keymap("n", "-D", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
     vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+	vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 end
 
 -- nvim-cmp supports additional completion capabilities
@@ -40,7 +41,7 @@ local servers = {
     "bashls",
     "dockerls",
     "rust_analyzer",
-    "tailwindcss",
+    "tailwindcss"
 }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
@@ -55,7 +56,7 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 require "lspconfig".sumneko_lua.setup {
-	on_attach = on_attach,
+    on_attach = on_attach,
     settings = {
         Lua = {
             runtime = {
@@ -82,11 +83,7 @@ require "lspconfig".sumneko_lua.setup {
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
--- luasnip setup
-local luasnip = require "luasnip"
-
 -- nvim-cmp setup
--- TODO: Maybe Check if this can be changed
 local cmp = require "cmp"
 cmp.setup {
     snippet = {
@@ -99,30 +96,8 @@ cmp.setup {
             behavior = cmp.ConfirmBehavior.Relace,
             select = true
         },
-        ["<Tab>"] = cmp.mapping(
-            function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                elseif luasnip.expand_or_jumpable() then
-                    luasnip.expand_or_jump()
-                else
-                    fallback()
-                end
-            end,
-            {"i", "s"}
-        ),
-        ["<S-Tab>"] = cmp.mapping(
-            function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                elseif luasnip.jumpable(-1) then
-                    luasnip.jump(-1)
-                else
-                    fallback()
-                end
-            end,
-            {"i", "s"}
-        )
+        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+        ["<Tab>"] = cmp.mapping.select_next_item()
     },
     sources = {
         {name = "nvim_lsp"},
