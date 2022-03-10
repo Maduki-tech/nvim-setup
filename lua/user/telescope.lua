@@ -82,11 +82,17 @@ vim.api.nvim_set_keymap(
     {noremap = true, silent = true}
 )
 
--- KEY BINDINGS
 vim.api.nvim_set_keymap(
     "n",
     "<leader>so",
     [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]],
+    {noremap = true, silent = true}
+)
+
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>ft",
+    [[:TodoTelescope<CR>]],
     {noremap = true, silent = true}
 )
 
