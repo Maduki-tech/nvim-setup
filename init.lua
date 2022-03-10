@@ -80,7 +80,6 @@ require("packer").startup(
     end
 )
 
-
 ----------------- GENERAL CONFIG ------------------
 -- Highlight on yank
 vim.api.nvim_exec(
