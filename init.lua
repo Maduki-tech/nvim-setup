@@ -27,7 +27,7 @@ require("packer").startup(
                 "nvim-lua/plenary.nvim"
             }
         }
-        use "nvim-telescope/telescope-fzy-native.nvim"
+        use "nvim-telescope/telescope-fzynative.nvim"
 
         -- Treesitter
         use "nvim-treesitter/nvim-treesitter"
