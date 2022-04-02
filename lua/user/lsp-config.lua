@@ -88,12 +88,12 @@ local cmp = require "cmp"
 cmp.setup {
     snippet = {
         expand = function(args)
-            require("luasnip").lsp_expand(args.body)
+            -- require("luasnip").lsp_expand(args.body)
         end
     },
     mapping = {
         ["<CR>"] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Relace,
+            -- behavior = cmp.ConfirmBehavior.Relace,
             select = true
         },
         ["<S-Tab>"] = cmp.mapping.select_prev_item(),
