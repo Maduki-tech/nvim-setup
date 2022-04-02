@@ -27,7 +27,7 @@ require("packer").startup(
                 "nvim-lua/plenary.nvim"
             }
         }
-        use "nvim-telescope/telescope-fzynative.nvim"
+		use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
         -- Treesitter
         use "nvim-treesitter/nvim-treesitter"
@@ -55,7 +55,6 @@ require("packer").startup(
             },
             config = function()
                 require "nvim-tree".setup {
-                    auto_close = true,
                     actions = {
                         open_file = {
                             quit_on_open = true,
