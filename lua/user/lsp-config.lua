@@ -93,13 +93,12 @@ cmp.setup {
 			if not luasnip then
 				return
 			end
-            require("luasnip").lsp_expand(args.body)
 			luasnip.lsp_expand(args.body)
         end
     },
     mapping = {
         ["<CR>"] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Relace,
+            -- behavior = cmp.ConfirmBehavior.Relace,
             select = true
         },
         ["<S-Tab>"] = cmp.mapping.select_prev_item(),
