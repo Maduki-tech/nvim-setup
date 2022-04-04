@@ -33,6 +33,7 @@ require("packer").startup(
         use "nvim-treesitter/nvim-treesitter"
         use "nvim-treesitter/nvim-treesitter-textobjects"
         use "nvim-treesitter/playground"
+        use "sbdchd/neoformat" -- formatting the text
 
         use "neovim/nvim-lspconfig" -- Collection of configurations for built-in LSP client
         use "hrsh7th/nvim-cmp" -- Autocompletion plugin
@@ -68,7 +69,6 @@ require("packer").startup(
         -- GIT
         use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
         use "tpope/vim-fugitive" -- Git commands in nvi
-        use "sbdchd/neoformat" -- formatting the text
 
         -- COMMENTS
         use "https://github.com/tpope/vim-commentary.git"
