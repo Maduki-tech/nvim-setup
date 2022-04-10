@@ -71,6 +71,7 @@ require("packer").startup(
         use "tpope/vim-fugitive" -- Git commands in nvi
 
         -- COMMENTS
+		-- TODO: Look for new one
         use "https://github.com/tpope/vim-commentary.git"
 
         use {

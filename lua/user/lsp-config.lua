@@ -42,7 +42,9 @@ local servers = {
     "dockerls",
     "rust_analyzer",
     "tailwindcss",
-	"html"
+	"html",
+	"cssmodules_ls",
+	"cssls"
 }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
