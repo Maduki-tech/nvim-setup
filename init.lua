@@ -11,7 +11,7 @@ require("user.keymap")
 require("user.gitsigns")
 require("user.treesitter")
 require("user.telescope")
---require("user.nvim-tree")
+require("user.nvim-comment")
 
 local use = require("packer").use
 require("packer").startup(
@@ -72,7 +72,8 @@ require("packer").startup(
 
         -- COMMENTS
 		-- TODO: Look for new one
-        use "https://github.com/tpope/vim-commentary.git"
+		use "terrortylor/nvim-comment"
+		use 'JoosepAlviste/nvim-ts-context-commentstring'
 
         use {
             "folke/todo-comments.nvim",
