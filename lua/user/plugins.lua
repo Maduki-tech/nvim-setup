@@ -13,12 +13,7 @@ require("packer").startup(
         use "itchyny/lightline.vim" -- Fancier statusline
         use "lukas-reineke/indent-blankline.nvim" -- Delete all the Blank lines
         -- Telescope Requirements
-        use {
-            "nvim-telescope/telescope.nvim",
-            requires = {
-                "nvim-lua/plenary.nvim"
-            }
-        }
+        use {"nvim-telescope/telescope.nvim", requires = {"nvim-lua/plenary.nvim"}}
         use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
 
         -- Treesitter
@@ -31,17 +26,20 @@ require("packer").startup(
         use "hrsh7th/nvim-cmp" -- Autocompletion plugin
         use "hrsh7th/cmp-nvim-lsp"
         use "epilande/vim-react-snippets" -- react Snippets
-        use {
-            "L3MON4D3/LuaSnip", -- Snippets plugin
-            after = "nvim-cmp"
-        }
-        use {"saadparwaiz1/cmp_luasnip"}
 
         -- WEBDEV
         use "jiangmiao/auto-pairs"
         use "maxmellon/vim-jsx-pretty"
         use "mattn/emmet-vim"
-        use "rafamadriz/friendly-snippets"
+        -- cmp plugins
+        use "hrsh7th/cmp-buffer" -- buffer completions
+        use "hrsh7th/cmp-path" -- path completions
+        use "hrsh7th/cmp-cmdline" -- cmdline completions
+        use "saadparwaiz1/cmp_luasnip" -- snippet completions
+
+        -- snippets
+        use "L3MON4D3/LuaSnip" --snippet engine
+        use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
         use {
             "kyazdani42/nvim-tree.lua",
