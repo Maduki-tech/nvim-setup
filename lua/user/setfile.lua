@@ -1,7 +1,7 @@
 -- SETFILES FOR
 
 --Incremental live completion (note: this is now a default on master)
-vim.o.inccommand = 'nosplit'
+vim.o.inccommand = "nosplit"
 
 -- SET THE WIDTH FOR THE TABS
 vim.o.tabstop = 4
@@ -18,25 +18,22 @@ vim.o.wrap = false
 vim.wo.number = true
 vim.wo.relativenumber = true
 
-
 --Save undo history
 vim.opt.undofile = false
-
 
 --Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = "yes"
 
 -- MAKE SCROLL OFF
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 15
 
-
 --Set colorscheme (order is important here)
 
-vim.cmd[[
+vim.cmd [[
 augroup ChangeBackgroudColour
 	autocmd colorscheme * :hi normal guibg=none
 augroup END
@@ -47,13 +44,16 @@ vim.cmd [[set colorcolumn=80 ]]
 vim.cmd [[highlight ColorColumn ctermbg=0 guibg=grey]]
 vim.cmd [[colorscheme gruvbox]]
 
-
-vim.g.user_emmet_leader_key = '<C-e>'
-vim.g.user_emmet_mode = 'inv'    --enable all function in all mode.
+vim.g.user_emmet_leader_key = "<C-e>"
+vim.g.user_emmet_mode = "inv" --enable all function in all mode.
+vim.g.UltiSnipsExpandTrigger = "<C-l>"
 
 --Set statusbar
 vim.g.lightline = {
-	colorscheme = 'gruvbox',
-	active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } },
-	component_function = { gitbranch = 'fugitive#head'},
+    colorscheme = "gruvbox",
+    active = {
+        left = {{"mode", "paste"}, {"gitbranch", "readonly", "modified"}},
+        right = {{"filename"}}
+	},
+    component_function = {gitbranch = "fugitive#head"}
 }

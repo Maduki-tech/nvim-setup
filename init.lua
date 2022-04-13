@@ -11,7 +11,7 @@ require("user.keymap")
 require("user.gitsigns")
 require("user.treesitter")
 require("user.telescope")
---require("user.nvim-tree")
+require("user.nvim-comment")
 
 local use = require("packer").use
 require("packer").startup(
@@ -27,22 +27,29 @@ require("packer").startup(
                 "nvim-lua/plenary.nvim"
             }
         }
+        use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
 
-		use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
         -- Treesitter
         use "nvim-treesitter/nvim-treesitter"
         use "nvim-treesitter/nvim-treesitter-textobjects"
         use "nvim-treesitter/playground"
+        use "sbdchd/neoformat" -- formatting the text
 
         use "neovim/nvim-lspconfig" -- Collection of configurations for built-in LSP client
         use "hrsh7th/nvim-cmp" -- Autocompletion plugin
         use "hrsh7th/cmp-nvim-lsp"
-        use "L3MON4D3/LuaSnip" -- Snippets plugin
+        use "epilande/vim-react-snippets" -- react Snippets
+        use {
+            "L3MON4D3/LuaSnip", -- Snippets plugin
+            after = "nvim-cmp",
+        }
+		use { 'saadparwaiz1/cmp_luasnip' }
 
         -- WEBDEV
         use "jiangmiao/auto-pairs"
         use "maxmellon/vim-jsx-pretty"
         use "mattn/emmet-vim"
+        use "rafamadriz/friendly-snippets"
 
         use {
             "kyazdani42/nvim-tree.lua",
@@ -64,10 +71,10 @@ require("packer").startup(
         -- GIT
         use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
         use "tpope/vim-fugitive" -- Git commands in nvi
-        use "sbdchd/neoformat" -- formatting the text
 
         -- COMMENTS
-        use "https://github.com/tpope/vim-commentary.git"
+        use "terrortylor/nvim-comment"
+        use "JoosepAlviste/nvim-ts-context-commentstring"
 
         use {
             "folke/todo-comments.nvim",
@@ -96,3 +103,6 @@ vim.g.indent_blankline_char = ""
 vim.cmd [[
 autocmd vimEnter *.go nnoremap <C-r> :w <CR> :!go run . <CR>
 ]]
+
+
+	vim.g.snippets = "luasnip"

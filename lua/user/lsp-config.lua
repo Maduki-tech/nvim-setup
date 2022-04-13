@@ -1,5 +1,4 @@
 local nvim_lsp = require "lspconfig"
-
 -- TODO: MAYBE CHECK FOR SOME BETTER CONFIGS
 local on_attach = function()
     local opts = {noremap = true, silent = true}
@@ -23,7 +22,7 @@ local on_attach = function()
     vim.api.nvim_set_keymap("n", "-d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
     vim.api.nvim_set_keymap("n", "-D", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
     vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-	vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 end
 
 -- nvim-cmp supports additional completion capabilities
@@ -41,7 +40,10 @@ local servers = {
     "bashls",
     "dockerls",
     "rust_analyzer",
-    "tailwindcss"
+    "tailwindcss",
+    "html",
+    "cssmodules_ls",
+    "cssls"
 }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
@@ -89,6 +91,11 @@ cmp.setup {
     snippet = {
         expand = function(args)
             -- require("luasnip").lsp_expand(args.body)
+            local luasnip = require("luasnip")
+            if not luasnip then
+                return
+            end
+            luasnip.lsp_expand(args.body)
         end
     },
     mapping = {
