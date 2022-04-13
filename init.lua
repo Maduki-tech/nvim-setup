@@ -27,7 +27,7 @@ require("packer").startup(
                 "nvim-lua/plenary.nvim"
             }
         }
-		use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+        use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
 
         -- Treesitter
         use "nvim-treesitter/nvim-treesitter"
@@ -41,13 +41,15 @@ require("packer").startup(
         use "epilande/vim-react-snippets" -- react Snippets
         use {
             "L3MON4D3/LuaSnip", -- Snippets plugin
-            after = "nvim-cmp"
+            after = "nvim-cmp",
         }
+		use { 'saadparwaiz1/cmp_luasnip' }
 
         -- WEBDEV
         use "jiangmiao/auto-pairs"
         use "maxmellon/vim-jsx-pretty"
         use "mattn/emmet-vim"
+        use "rafamadriz/friendly-snippets"
 
         use {
             "kyazdani42/nvim-tree.lua",
@@ -71,9 +73,9 @@ require("packer").startup(
         use "tpope/vim-fugitive" -- Git commands in nvi
 
         -- COMMENTS
-		-- TODO: Look for new one
-		use "terrortylor/nvim-comment"
-		use 'JoosepAlviste/nvim-ts-context-commentstring'
+        -- TODO: Look for new one
+        use "terrortylor/nvim-comment"
+        use "JoosepAlviste/nvim-ts-context-commentstring"
 
         use {
             "folke/todo-comments.nvim",
@@ -102,3 +104,6 @@ vim.g.indent_blankline_char = ""
 vim.cmd [[
 autocmd vimEnter *.go nnoremap <C-r> :w <CR> :!go run . <CR>
 ]]
+
+
+	vim.g.snippets = "luasnip"

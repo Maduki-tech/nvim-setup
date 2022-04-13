@@ -1,5 +1,4 @@
 local nvim_lsp = require "lspconfig"
-
 -- TODO: MAYBE CHECK FOR SOME BETTER CONFIGS
 local on_attach = function()
     local opts = {noremap = true, silent = true}
@@ -42,9 +41,9 @@ local servers = {
     "dockerls",
     "rust_analyzer",
     "tailwindcss",
-	"html",
-	"cssmodules_ls",
-	"cssls"
+    "html",
+    "cssmodules_ls",
+    "cssls"
 }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
@@ -91,11 +90,11 @@ local cmp = require "cmp"
 cmp.setup {
     snippet = {
         expand = function(args)
-			local luasnip = require("luasnip")
-			if not luasnip then
-				return
-			end
-			luasnip.lsp_expand(args.body)
+            local luasnip = require("luasnip")
+            if not luasnip then
+                return
+            end
+            luasnip.lsp_expand(args.body)
         end
     },
     mapping = {
@@ -108,6 +107,6 @@ cmp.setup {
     },
     sources = {
         {name = "nvim_lsp"},
-        {name = "luasnip"},
+        {name = "luasnip"}
     }
 }
