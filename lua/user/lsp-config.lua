@@ -1,5 +1,4 @@
 local nvim_lsp = require "lspconfig"
--- TODO: MAYBE CHECK FOR SOME BETTER CONFIGS
 local on_attach = function()
     local opts = {noremap = true, silent = true}
     vim.api.nvim_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -19,7 +18,6 @@ local on_attach = function()
     vim.api.nvim_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
     vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     vim.api.nvim_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	-- TODO: CHANGE THIS TO NEW
     vim.api.nvim_set_keymap("n", "-d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
     vim.api.nvim_set_keymap("n", "-D", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
     vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
@@ -72,21 +70,10 @@ if not configs.ls_emmet then
         'html',
         'css',
         'scss',
-        'javascript',
         'javascriptreact',
-        'typescript',
         'typescriptreact',
-        'haml',
         'xml',
-        'xsl',
-        'pug',
-        'slim',
-        'sass',
-        'stylus',
         'less',
-        'sss',
-        'hbs',
-        'handlebars',
       };
       root_dir = function(fname)
         return vim.loop.cwd()
