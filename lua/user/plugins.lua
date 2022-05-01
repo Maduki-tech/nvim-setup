@@ -40,6 +40,7 @@ require("packer").startup(
         -- snippets
         use "L3MON4D3/LuaSnip" --snippet engine
         use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+		use "Maduki-tech/runNode.nvim"
 
         use {
             "kyazdani42/nvim-tree.lua",
