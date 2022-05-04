@@ -198,7 +198,7 @@ _G.packer_plugins = {
   ["runNode.nvim"] = {
     loaded = true,
     path = "/Users/davidschluter/.local/share/nvim/site/pack/packer/start/runNode.nvim",
-    url = "https://github.com/Maduki-tech/runNode.nvim"
+    url = "/Users/davidschluter/Documents/programming/plugins/runNode.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,

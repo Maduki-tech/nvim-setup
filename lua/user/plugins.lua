@@ -8,6 +8,7 @@ end
 local use = require("packer").use
 require("packer").startup(
     function()
+        use "/Users/davidschluter/Documents/programming/plugins/runNode.nvim"
         use "wbthomason/packer.nvim" -- Package manager
         use "gruvbox-community/gruvbox" -- Best Color Ever
         use "itchyny/lightline.vim" -- Fancier statusline
@@ -40,7 +41,6 @@ require("packer").startup(
         -- snippets
         use "L3MON4D3/LuaSnip" --snippet engine
         use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-		use "Maduki-tech/runNode.nvim"
 
         use {
             "kyazdani42/nvim-tree.lua",
