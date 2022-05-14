@@ -8,7 +8,6 @@ end
 local use = require("packer").use
 require("packer").startup(
     function()
-        use "/Users/davidschluter/Documents/programming/plugins/runNode.nvim"
         use "wbthomason/packer.nvim" -- Package manager
         use "gruvbox-community/gruvbox" -- Best Color Ever
         use "itchyny/lightline.vim" -- Fancier statusline
@@ -16,7 +15,6 @@ require("packer").startup(
         -- Telescope Requirements
         use {"nvim-telescope/telescope.nvim", requires = {"nvim-lua/plenary.nvim"}}
         use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
-
         -- Treesitter
         use "nvim-treesitter/nvim-treesitter"
         use "nvim-treesitter/nvim-treesitter-textobjects"
@@ -74,5 +72,12 @@ require("packer").startup(
                 require("todo-comments").setup {}
             end
         }
+
+
+        use(
+            {"iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function()
+                    vim.g.mkdp_filetypes = {"markdown"}
+                end, ft = {"markdown"}}
+        )
     end
 )

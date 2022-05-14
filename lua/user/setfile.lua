@@ -55,5 +55,5 @@ vim.g.lightline = {
         left = {{"mode", "paste"}, {"gitbranch", "readonly", "modified"}},
         right = {{"filename"}}
 	},
-    component_function = {gitbranch = "fugitive#head"}
+    component_function = {gitbranch = "FugitiveHead"}
 }

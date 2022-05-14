@@ -111,3 +111,6 @@ require "lspconfig".sumneko_lua.setup {
 }
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
+
+require'lspconfig'.csharp_ls.setup{}
+require'lspconfig'.sqlls.setup{}
