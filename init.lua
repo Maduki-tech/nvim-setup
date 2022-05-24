@@ -5,13 +5,13 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
 end
 
-require("user.setfile")
-require("user.lsp-config")
-require("user.keymap")
-require("user.gitsigns")
-require("user.treesitter")
-require("user.telescope")
-require("user.nvim-comment")
+--require("user.setfile")
+--require("user.lsp-config")
+--require("user.keymap")
+--require("user.gitsigns")
+--require("user.treesitter")
+--require("user.telescope")
+--require("user.nvim-comment")
 
 local use = require("packer").use
 require("packer").startup(
