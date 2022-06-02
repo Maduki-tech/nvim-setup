@@ -101,11 +101,7 @@ _G.packer_plugins = {
   },
   ["cmp-tabnine"] = {
     loaded = true,
-<<<<<<< HEAD
     path = "/Users/davidschluter/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
-=======
-    path = "/home/david/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
->>>>>>> 9a9816ff2b8eb24ec3ceeea27f4b2585affd3c50
     url = "https://github.com/tzachar/cmp-tabnine"
   },
   cmp_luasnip = {
@@ -203,11 +199,7 @@ _G.packer_plugins = {
   },
   ["onedark.vim"] = {
     loaded = true,
-<<<<<<< HEAD
     path = "/Users/davidschluter/.local/share/nvim/site/pack/packer/start/onedark.vim",
-=======
-    path = "/home/david/.local/share/nvim/site/pack/packer/start/onedark.vim",
->>>>>>> 9a9816ff2b8eb24ec3ceeea27f4b2585affd3c50
     url = "https://github.com/joshdick/onedark.vim"
   },
   ["packer.nvim"] = {

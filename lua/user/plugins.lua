@@ -9,15 +9,10 @@ local use = require("packer").use
 require("packer").startup(
     function()
         use "wbthomason/packer.nvim" -- Package manager
-<<<<<<< HEAD
-        use "gruvbox-community/gruvbox" -- Best Color Ever
-        use "joshdick/onedark.vim"
-=======
 		use "sainnhe/gruvbox-material"
 		use "gruvbox-community/gruvbox" -- Best Color Ever
 		use "joshdick/onedark.vim"
 		use "folke/tokyonight.nvim"
->>>>>>> 9a9816ff2b8eb24ec3ceeea27f4b2585affd3c50
         use "itchyny/lightline.vim" -- Fancier statusline
         use "lukas-reineke/indent-blankline.nvim" -- Delete all the Blank lines
         -- Telescope Requirements
