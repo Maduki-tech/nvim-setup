@@ -12,6 +12,7 @@ require("packer").startup(
 		use "sainnhe/gruvbox-material"
 		use "gruvbox-community/gruvbox" -- Best Color Ever
 		use "joshdick/onedark.vim"
+		use "folke/tokyonight.nvim"
         use "itchyny/lightline.vim" -- Fancier statusline
         use "lukas-reineke/indent-blankline.nvim" -- Delete all the Blank lines
         -- Telescope Requirements
