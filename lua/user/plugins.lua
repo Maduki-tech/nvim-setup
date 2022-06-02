@@ -10,6 +10,7 @@ require("packer").startup(
     function()
         use "wbthomason/packer.nvim" -- Package manager
         use "gruvbox-community/gruvbox" -- Best Color Ever
+        use "joshdick/onedark.vim"
         use "itchyny/lightline.vim" -- Fancier statusline
         use "lukas-reineke/indent-blankline.nvim" -- Delete all the Blank lines
         -- Telescope Requirements
@@ -72,12 +73,17 @@ require("packer").startup(
                 require("todo-comments").setup {}
             end
         }
-
+        use {"tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp"}
 
         use(
-            {"iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function()
+            {
+                "iamcco/markdown-preview.nvim",
+                run = "cd app && npm install",
+                setup = function()
                     vim.g.mkdp_filetypes = {"markdown"}
-                end, ft = {"markdown"}}
+                end,
+                ft = {"markdown"}
+            }
         )
     end
 )
