@@ -1,4 +1,5 @@
 local nvim_lsp = require "lspconfig"
+
 local on_attach = function()
     local opts = {noremap = true, silent = true}
     vim.api.nvim_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -39,10 +40,10 @@ local servers = {
     "bashls",
     "dockerls",
     "rust_analyzer",
-    "tailwindcss",
-    "html",
-    "cssmodules_ls",
-    "cssls"
+    -- "tailwindcss",
+    -- "html",
+    -- "cssmodules_ls",
+    -- "cssls"
 }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
@@ -83,9 +84,11 @@ if not configs.ls_emmet then
 end
 
 lspconfig.ls_emmet.setup {capabilities = capabilities}
-
+local sumneko_binary_path = vim.fn.exepath('lua-language-server')
+local sumneko_root_path = vim.fn.fnamemodify(sumneko_binary_path, ':h:h:h')
 require "lspconfig".sumneko_lua.setup {
     on_attach = on_attach,
+	cmd = {sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua"};
     settings = {
         Lua = {
             runtime = {
