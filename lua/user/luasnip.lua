@@ -112,6 +112,8 @@ cmp.setup {
                 ({
                 nvim_lsp = "[LSP]",
                 cmp_tabnine = "[TN]",
+				cmp_tabnine = "[TN]",
+				nvim_lsp = "[LSP]",
                 luasnip = "[Snippet]",
                 buffer = "[Buffer]",
                 path = "[Path]"
@@ -120,8 +122,8 @@ cmp.setup {
         end
     },
     sources = {
+		{name = "cmp_tabnine"},
         {name = "nvim_lsp"},
-        {name = "cmp_tabnine"},
         {name = "luasnip"},
         {name = "buffer"},
         {name = "path"}
@@ -130,11 +132,12 @@ cmp.setup {
         behavior = cmp.ConfirmBehavior.Replace,
         select = false
     },
-    window = {
-        documentation = {
-            border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}
-        }
-    },
+	window = {
+
+    documentation = {
+        border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}
+    }
+	},
     experimental = {
         ghost_text = false,
         native_menu = false

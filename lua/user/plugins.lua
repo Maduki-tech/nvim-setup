@@ -9,8 +9,15 @@ local use = require("packer").use
 require("packer").startup(
     function()
         use "wbthomason/packer.nvim" -- Package manager
+<<<<<<< HEAD
         use "gruvbox-community/gruvbox" -- Best Color Ever
         use "joshdick/onedark.vim"
+=======
+		use "sainnhe/gruvbox-material"
+		use "gruvbox-community/gruvbox" -- Best Color Ever
+		use "joshdick/onedark.vim"
+		use "folke/tokyonight.nvim"
+>>>>>>> 9a9816ff2b8eb24ec3ceeea27f4b2585affd3c50
         use "itchyny/lightline.vim" -- Fancier statusline
         use "lukas-reineke/indent-blankline.nvim" -- Delete all the Blank lines
         -- Telescope Requirements
@@ -36,6 +43,7 @@ require("packer").startup(
         use "hrsh7th/cmp-path" -- path completions
         use "hrsh7th/cmp-cmdline" -- cmdline completions
         use "saadparwaiz1/cmp_luasnip" -- snippet completions
+		use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
         -- snippets
         use "L3MON4D3/LuaSnip" --snippet engine
