@@ -111,8 +111,6 @@ cmp.setup {
             vim_item.menu =
                 ({
                 nvim_lsp = "[LSP]",
-                cmp_tabnine = "[TN]",
-				cmp_tabnine = "[TN]",
 				nvim_lsp = "[LSP]",
                 luasnip = "[Snippet]",
                 buffer = "[Buffer]",
@@ -122,7 +120,6 @@ cmp.setup {
         end
     },
     sources = {
-		{name = "cmp_tabnine"},
         {name = "nvim_lsp"},
         {name = "luasnip"},
         {name = "buffer"},
