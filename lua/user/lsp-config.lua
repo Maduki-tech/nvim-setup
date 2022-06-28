@@ -1,5 +1,5 @@
 local nvim_lsp = require "lspconfig"
--- TODO: MAYBE CHECK FOR SOME BETTER CONFIGS
+
 local on_attach = function()
     local opts = {noremap = true, silent = true}
     vim.api.nvim_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -57,56 +57,56 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-require "lspconfig".sumneko_lua.setup {
-    on_attach = on_attach,
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = "LuaJIT",
-                -- Setup your lua path
-                path = runtime_path
+local lspconfig = require "lspconfig"
+local configs = require "lspconfig.configs"
+
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+if not configs.ls_emmet then
+    configs.ls_emmet = {
+        default_config = {
+            cmd = {"ls_emmet", "--stdio"},
+            filetypes = {
+                "html",
+                "css",
+                "scss",
+                "javascriptreact",
+                "typescriptreact",
+                "xml",
+                "less"
             },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {"vim"}
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true)
-            },
-            -- Do not send telemetry data containing a randomized butunique identifier
-            telemetry = {
-                enable = false
-            }
+            root_dir = function(fname)
+                return vim.loop.cwd()
+            end,
+            settings = {}
         }
     }
-}
--- Set completeopt to have a better completion experience
+end
+
+lspconfig.ls_emmet.setup {capabilities = capabilities}
+require'lspconfig'.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}-- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
--- nvim-cmp setup
-local cmp = require "cmp"
-cmp.setup {
-    snippet = {
-        expand = function(args)
-            local luasnip = require("luasnip")
-            if not luasnip then
-                return
-            end
-            luasnip.lsp_expand(args.body)
-        end
-    },
-    mapping = {
-        ["<CR>"] = cmp.mapping.confirm {
-            -- behavior = cmp.ConfirmBehavior.Relace,
-            select = true
-        },
-        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-        ["<Tab>"] = cmp.mapping.select_next_item()
-    },
-    sources = {
-        {name = "nvim_lsp"},
-        {name = "luasnip"}
-    }
-}
+require'lspconfig'.csharp_ls.setup{}
+require'lspconfig'.sqlls.setup{}

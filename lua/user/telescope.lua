@@ -14,7 +14,6 @@ telescope.setup {
         },
         mappings = {
             i = {
-                ["<C-u>"] = false,
                 ["<C-d>"] = false
             }
         },
@@ -90,6 +89,12 @@ vim.api.nvim_set_keymap(
     "n",
     "<leader>so",
     [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]],
+    {noremap = true, silent = true}
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>fl",
+    [[<cmd>lua require('telescope.builtin').live_grep()<CR>]],
     {noremap = true, silent = true}
 )
 
