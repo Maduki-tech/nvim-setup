@@ -39,11 +39,11 @@ augroup ChangeBackgroudColour
 augroup END
 ]]
 vim.o.termguicolors = true
-vim.g.onedark_terminal_italics = 2
 vim.cmd [[set colorcolumn=80 ]]
 vim.cmd [[highlight ColorColumn ctermbg=0 guibg=grey]]
-vim.cmd [[colorscheme onedark]]
 
+
+vim.cmd [[colorscheme onedark]]
 vim.g.user_emmet_leader_key = "<C-e>"
 vim.g.user_emmet_mode = "inv" --enable all function in all mode.
 vim.g.UltiSnipsExpandTrigger = "<C-l>"

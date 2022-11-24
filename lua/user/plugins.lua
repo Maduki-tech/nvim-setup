@@ -1,6 +1,5 @@
 local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 
-
 -- AUTO INSTALL PACKER WHEN IT IS NOT ON THE PC
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
@@ -10,10 +9,11 @@ local use = require("packer").use
 require("packer").startup(
     function()
         use "wbthomason/packer.nvim" -- Package manager
-		use "sainnhe/gruvbox-material"
-		use "gruvbox-community/gruvbox" -- Best Color Ever
-		use "joshdick/onedark.vim"
-		use "folke/tokyonight.nvim"
+        use "sainnhe/gruvbox-material"
+        use "gruvbox-community/gruvbox" -- Best Color Ever
+        use "joshdick/onedark.vim"
+        use "folke/tokyonight.nvim"
+        use {"catppuccin/nvim", as = "catppuccin"}
         use "itchyny/lightline.vim" -- Fancier statusline
         use "lukas-reineke/indent-blankline.nvim" -- Delete all the Blank lines
         -- Telescope Requirements
@@ -39,7 +39,8 @@ require("packer").startup(
         use "hrsh7th/cmp-path" -- path completions
         use "hrsh7th/cmp-cmdline" -- cmdline completions
         use "saadparwaiz1/cmp_luasnip" -- snippet completions
-		use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+        use {"tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp"}
+        use {"OmniSharp/omnisharp-vim"}
 
         -- snippets
         use "L3MON4D3/LuaSnip" --snippet engine
@@ -77,7 +78,6 @@ require("packer").startup(
                 require("todo-comments").setup {}
             end
         }
-        use {"tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp"}
 
         use(
             {
@@ -89,5 +89,9 @@ require("packer").startup(
                 ft = {"markdown"}
             }
         )
+
+        -- Dart/Flutter
+        -- use "thosakwe/vim-flutter"
+        use {"akinsho/flutter-tools.nvim", branch = "changyiyao/main", requires = "nvim-lua/plenary.nvim"}
     end
 )

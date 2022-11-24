@@ -27,7 +27,8 @@ end
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
 
 -- Enable the following language servers
 local servers = {
@@ -40,10 +41,13 @@ local servers = {
     "bashls",
     "dockerls",
     "rust_analyzer",
+	"dartls",
     "tailwindcss",
     "html",
     "cssmodules_ls",
-    "cssls"
+    "cssls",
+	"prismals",
+	"phpactor",
 }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
@@ -108,5 +112,3 @@ require'lspconfig'.sumneko_lua.setup {
 }-- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
-require'lspconfig'.csharp_ls.setup{}
-require'lspconfig'.sqlls.setup{}
