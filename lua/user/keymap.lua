@@ -1,5 +1,6 @@
 local opts = {noremap = true, silent = true}
 -------- GENERAL KEYBOARD SHORTCUTS -----------
+-- Move between windows
 
 -- Remap space as leader key
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", {noremap = true, silent = true})

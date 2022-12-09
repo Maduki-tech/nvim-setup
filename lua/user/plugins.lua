@@ -4,7 +4,6 @@ local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nv
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
 end
-
 local use = require("packer").use
 require("packer").startup(
     function()
@@ -42,6 +41,7 @@ require("packer").startup(
         use {"tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp"}
         use {"OmniSharp/omnisharp-vim"}
 
+		use "github/copilot.vim"
         -- snippets
         use "L3MON4D3/LuaSnip" --snippet engine
         use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
@@ -71,6 +71,8 @@ require("packer").startup(
         use "terrortylor/nvim-comment"
         use "JoosepAlviste/nvim-ts-context-commentstring"
 
+
+		
         use {
             "folke/todo-comments.nvim",
             requires = "nvim-lua/plenary.nvim",
