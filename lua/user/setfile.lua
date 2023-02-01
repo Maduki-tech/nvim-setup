@@ -8,6 +8,9 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.swapfile = false
 
+--vim.g.copilot_no_tab_map = true
+vim.cmd("autocmd BufEnter * set formatoptions-=cro")
+vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 --Set highlight on search
 vim.o.hlsearch = false
 
@@ -39,11 +42,10 @@ augroup ChangeBackgroudColour
 augroup END
 ]]
 vim.o.termguicolors = true
-vim.g.onedark_terminal_italics = 2
 vim.cmd [[set colorcolumn=80 ]]
 vim.cmd [[highlight ColorColumn ctermbg=0 guibg=grey]]
-vim.cmd [[colorscheme onedark]]
 
+vim.cmd [[colorscheme onedark]]
 vim.g.user_emmet_leader_key = "<C-e>"
 vim.g.user_emmet_mode = "inv" --enable all function in all mode.
 vim.g.UltiSnipsExpandTrigger = "<C-l>"
@@ -54,6 +56,6 @@ vim.g.lightline = {
     active = {
         left = {{"mode", "paste"}, {"gitbranch", "readonly", "modified"}},
         right = {{"filename"}}
-	},
+    },
     component_function = {gitbranch = "FugitiveHead"}
 }

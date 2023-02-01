@@ -47,6 +47,12 @@ end
 -- IMPORTANT SHORTCUTS
 vim.api.nvim_set_keymap(
     "n",
+    "<leader>fa",
+    [[<cmd>lua require('telescope.builtin').grep_string()<CR>]],
+    {noremap = true, silent = true}
+)
+vim.api.nvim_set_keymap(
+    "n",
     "<leader><space>",
     [[<cmd>lua require('telescope.builtin').buffers()<CR>]],
     {noremap = true, silent = true}
